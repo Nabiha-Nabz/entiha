@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Entiha</title>
+    <link rel="icon" type="image/png" sizes="512x512" href="images/tilo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background -->
+    <div class="elegant-bg"></div>
+
+    <nav class="luxury-nav">
+        <div class="nav-container">
+            <div class="logo">Entiha</div>
+            <div class="nav-links">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="profile.html" class="nav-link active">Profile</a>
+                <a href="packages.html" class="nav-link" id="packageLink">Packages</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="#" class="nav-link" onclick="logout()">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <div class="profile-container animate-fade-in">
+            <h2 class="gradient-text">Your Profile</h2>
+            
+            <form id="profileForm" class="profile-form glass">
+                <div class="profile-section">
+                    <h3>Personal Information</h3>
+                    <div class="form-group">
+                        <label>Profile Photo:</label>
+                        <div class="photo-upload">
+                            <input type="file" id="photo" accept="image/*">
+                            <div class="upload-area">
+                                <div class="upload-icon">📷</div>
+                                <p>Click to upload profile photo</p>
+                            </div>
+                            <img id="photoPreview" src="" alt="Profile Photo">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Name:</label>
+                        <input type="text" id="name" class="enhanced-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="email" id="email" class="enhanced-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Contact Number:</label>
+                        <input type="tel" id="phone" class="enhanced-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Change Password:</label>
+                        <input type="password" id="newPassword" class="enhanced-input" placeholder="New password">
+                        <br>
+                        <br>
+                        <input type="password" id="confirmNewPassword" class="enhanced-input" placeholder="Confirm new password">
+                    </div>
+                </div>
+                
+                <div class="profile-section">
+                    <h3>Admin Information (Read Only)</h3>
+                    <div class="read-only-info">
+                        <div class="info-item">
+                            <strong>GitHub:</strong> 
+                            <span id="githubProfile">Not provided</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>LinkedIn:</strong> 
+                            <span id="linkedinProfile">Not provided</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Leads Done:</strong> 
+                            <span id="leadsDone">0</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Current Package:</strong> 
+                            <span id="currentPackage">None</span>
+                        </div>
+                    </div>
+                    
+                    <div id="upgradeSection" class="upgrade-prompt">
+                        <h4>Upgrade Your Plan</h4>
+                        <p>You're on the Basic plan. Upgrade to Pro for unlimited applications!</p>
+                        <a href="payment.html?plan=pro&price=100" class="btn btn-primary">Upgrade to Pro Plan</a>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-full">Update Profile</button>
+            </form>
+        </div>
+    </div>
+    <footer class="luxury-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Entiha</h3>
+                    <p>Your gateway to international career opportunities. We help students and graduates find their dream jobs abroad.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#how-it-works">How It Works</a></li>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="dashboard.html">Job Application</a></li>
+                        <li><a href="dashboard.html">Resume Writing</a></li>
+                        <li><a href="dashboard.html">Career Counseling</a></li>
+                        <li><a href="dashboard.html">Interview Preparation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>Email: Assignmentstandard@gmail.com</p>
+                    <p>Phone: +91 99969 96575</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Entiha. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/profile.js"></script>
+    <script src="js/animations.js"></script>
+    <script>
+        // Photo upload preview
+        document.getElementById('photo').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('photoPreview').src = e.target.result;
+                    document.getElementById('photoPreview').style.display = 'block';
+                    document.querySelector('.upload-area').style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>

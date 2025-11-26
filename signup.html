@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Entiha</title>
+    <link rel="icon" type="image/png" sizes="512x512" href="images/tilo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="luxury-theme signup-page">
+    <!-- Background -->
+    <div class="elegant-bg"></div>
+
+    <nav class="luxury-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">Entiha</a>
+            </div>
+            <div class="nav-links">
+                <a href="login.html" class="btn btn-outline">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <div class="signup-container">
+            <div class="signup-card glass animate-fade-in">
+                <!-- Progress Steps -->
+                <div class="signup-progress">
+                    <div class="progress-step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Personal Info</div>
+                    </div>
+                    <div class="progress-step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Skills & Preferences</div>
+                    </div>
+                    <div class="progress-step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Account Setup</div>
+                    </div>
+                </div>
+
+                <div class="signup-header">
+                    <h1 class="signup-title">Start Your Global Career Journey</h1>
+                    <p class="signup-subtitle">Join thousands who found their dream jobs abroad</p>
+                </div>
+
+                <form id="signupForm" class="signup-form">
+                    <!-- Step 1: Personal Information -->
+                    <div class="form-section" data-step="1">
+                        <h3 class="form-section-title">Personal Information</h3>
+                        
+                        <div class="form-group">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" id="name" class="enhanced-input" placeholder="Enter your full name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" class="enhanced-input" placeholder="Enter your email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Contact Number</label>
+                            <input type="tel" id="phone" class="enhanced-input" placeholder="+1 (555) 123-4567" required>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Skills & Preferences -->
+                    <div class="form-section" data-step="2" style="display: none;">
+                        <h3 class="form-section-title">Your Skills & Preferences</h3>
+                        
+                        <div class="skills-section">
+                            <label class="form-label">Select Your Skills</label>
+                            <div class="skills-container">
+                                <div class="skill-option">
+                                    <input type="checkbox" id="skill-js" class="skill-checkbox" value="javascript">
+                                    <label for="skill-js" class="skill-label">JavaScript</label>
+                                </div>
+                                <div class="skill-option">
+                                    <input type="checkbox" id="skill-python" class="skill-checkbox" value="python">
+                                    <label for="skill-python" class="skill-label">Python</label>
+                                </div>
+                                <div class="skill-option">
+                                    <input type="checkbox" id="skill-java" class="skill-checkbox" value="java">
+                                    <label for="skill-java" class="skill-label">Java</label>
+                                </div>
+                                <div class="skill-option">
+                                    <input type="checkbox" id="skill-react" class="skill-checkbox" value="react">
+                                    <label for="skill-react" class="skill-label">React</label>
+                                </div>
+                                <div class="skill-option">
+                                    <input type="checkbox" id="skill-node" class="skill-checkbox" value="nodejs">
+                                    <label for="skill-node" class="skill-label">Node.js</label>
+                                </div>
+                                <div class="skill-option">
+                                    <input type="checkbox" id="skill-sql" class="skill-checkbox" value="sql">
+                                    <label for="skill-sql" class="skill-label">SQL</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="jobPreferences" class="form-label">Job Preferences</label>
+                            <textarea id="jobPreferences" class="enhanced-textarea" 
+                                      placeholder="Describe your ideal role, preferred industries, location preferences..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Account Setup -->
+                    <div class="form-section" data-step="3" style="display: none;">
+                        <h3 class="form-section-title">Account Details</h3>
+                        
+                        <div class="form-group">
+                            <label for="jobEmail" class="form-label">Email You want Us to Apply Jobs On</label>
+                            <input type="email" id="jobEmail" class="enhanced-input" placeholder="Email for job applications" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="jobPassword" class="form-label">Job Account Password (Make sure 2FA is Off!)</label>
+                            <input type="password" id="jobPassword" class="enhanced-input" placeholder="Password for job portals" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="form-label">Website Password</label>
+                            <input type="password" id="password" class="enhanced-input" placeholder="Create your account password" required minlength="8">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" id="confirmPassword" class="enhanced-input" placeholder="Confirm your password" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="terms" required>
+                                I agree to the <a href="#" class="text-gold">Terms of Service</a> and <a href="#" class="text-gold">Privacy Policy</a>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-prev" id="prevBtn" style="display: none;">
+                            Previous
+                        </button>
+                        <button type="button" class="btn btn-primary" id="nextBtn">
+                            Continue
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="submitBtn" style="display: none;">
+                            Create Account
+                        </button>
+                    </div>
+                </form>
+
+                <div class="auth-links text-center">
+                    <p class="text-muted">
+                        Already have an account? 
+                        <a href="login.html" class="auth-link">Sign in here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/signup-enhanced.js"></script>
+</body>
+</html>

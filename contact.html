@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Entiha</title>
+    <link rel="icon" type="image/png" sizes="512x512" href="images/tilo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="main-content">
+    <!-- Enhanced Background -->
+    <div class="elegant-bg"></div>
+
+    <nav class="luxury-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">Entiha</a>
+            </div>
+            <button class="mobile-menu-toggle">☰</button>
+            <div class="nav-links">
+                <!-- Navigation will be populated by auth.js -->
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <div class="contact-container animate-fade-in">
+            <h2 class="gradient-text text-center reveal animate-typewriter">Get In Touch</h2>
+            <p class="text-center text-muted reveal" style="margin-bottom: 3rem; animation-delay: 0.2s;">We're here to help you launch your global career</p>
+            
+            <div class="contact-content">
+                <div class="contact-info glass hover-lift reveal" style="animation-delay: 0.3s;">
+                    <h3 class="section-title animate-slide-left">Contact Information</h3>
+                    <p class="text-muted" style="margin-bottom: 2rem;">Feel free to reach out to us for any inquiries or support.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item animate-bounce-in" style="animation-delay: 0.4s;">
+                            <strong>Email</strong>
+                            <p>Assignmentstandard@gmail.com</p>
+                        </div>
+                        
+                        <div class="contact-item animate-bounce-in" style="animation-delay: 0.5s;">
+                            <strong>Phone</strong>
+                            <p>+91 99969 96575</p>
+                        </div>
+                        
+                        <div class="contact-item animate-bounce-in" style="animation-delay: 0.6s;">
+                            <strong>Response Time</strong>
+                            <p>We typically respond within 24 hours during business days</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form glass hover-lift reveal" style="animation-delay: 0.7s;">
+                    <h3 class="section-title animate-slide-right">Send us a Message</h3>
+                    <form id="contactForm" class="contact-form-container">
+                        <div class="form-group">
+                            <label for="contactName" class="form-label">Your Name</label>
+                            <input type="text" id="contactName" class="enhanced-input" required placeholder="Enter your full name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactEmail" class="form-label">Your Email</label>
+                            <input type="email" id="contactEmail" class="enhanced-input" required placeholder="Enter your email address">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactSubject" class="form-label">Subject</label>
+                            <input type="text" id="contactSubject" class="enhanced-input" required placeholder="What is this regarding?">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactMessage" class="form-label">Message</label>
+                            <textarea id="contactMessage" class="enhanced-textarea" rows="6" required placeholder="Tell us how we can help you..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-full hover-glow">
+                            <span>Send Message</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="luxury-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Entiha</h3>
+                    <p>Your gateway to international career opportunities. We help students and graduates find their dream jobs abroad.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#how-it-works">How It Works</a></li>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Job Application</a></li>
+                        <li><a href="#">Resume Writing</a></li>
+                        <li><a href="#">Career Counseling</a></li>
+                        <li><a href="#">Interview Preparation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>Email: Assignmentstandard@gmail.com</p>
+                    <p>Phone: +91 99969 96575</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Entiha. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>

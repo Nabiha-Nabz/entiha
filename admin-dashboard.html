@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Entiha</title>
+    <link rel="icon" type="image/png" sizes="512x512" href="images/tilo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Enhanced Background -->
+    <div class="elegant-bg"></div>
+
+    <nav class="luxury-nav">
+        <div class="nav-container">
+            <div class="logo">Entiha - Admin</div>
+            <button class="mobile-menu-toggle">☰</button>
+            <div class="nav-links">
+                <a href="#" class="nav-link" onclick="logout()">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <div class="admin-container animate-fade-in">
+            <h2 class="gradient-text text-center reveal">Admin Dashboard</h2>
+            <p class="text-center text-muted reveal" style="margin-bottom: 3rem;">Manage students and track their career progress</p>
+            
+            <!-- Navigation Tabs -->
+            <div class="admin-tabs glass reveal">
+                <button class="tab-btn active" onclick="showTab('students')">Students</button>
+                <button class="tab-btn" onclick="showTab('payments')">Payment History</button>
+                <button class="tab-btn" onclick="showTab('remitly-payments')">Remitly Payments</button>
+            </div>
+            
+            <!-- Students Tab -->
+            <div id="students-tab" class="tab-content active">
+                <div class="search-section glass hover-lift reveal">
+                    <h3 class="section-title">Search Students</h3>
+                    <div class="search-form">
+                        <input type="text" id="searchInput" class="search-input" placeholder="Search by name, email, or phone...">
+                        <button class="btn btn-primary hover-glow" onclick="searchStudents()">
+                            <span>Search</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="students-list glass reveal" id="studentsList">
+                    <div class="loading-state" id="studentsLoading">
+                        <div class="spinner"></div>
+                        <p>Loading students...</p>
+                    </div>
+                </div>
+                
+                <div class="student-management glass reveal" id="studentManagement" style="display: none;">
+                    <h3 class="section-title">Manage Student: <span id="selectedStudentName" class="gradient-text"></span></h3>
+                    
+                    <div class="management-sections">
+                        <div class="management-section glass hover-lift">
+                            <h4>📄 Upload Resume</h4>
+                            <div class="form-group">
+                                <input type="file" id="resumeUpload" class="file-input" accept=".pdf,.doc,.docx">
+                            </div>
+                            <button class="btn btn-primary hover-glow" onclick="uploadResume()">
+                                <span>Upload Resume</span>
+                            </button>
+                        </div>
+                        
+                        <div class="management-section glass hover-lift">
+                            <h4>🎓 Suggested Courses</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="text" id="courseName" class="form-input" placeholder="Course name">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="courseLink" class="form-input" placeholder="Course URL">
+                                </div>
+                            </div>
+                            <button class="btn btn-primary hover-glow" onclick="addCourse()">
+                                <span>Add Course</span>
+                            </button>
+                            <ul class="courses-list" id="coursesList"></ul>
+                        </div>
+                        
+                        <div class="management-section glass hover-lift">
+                            <h4>🔗 Professional Profiles</h4>
+                            <div class="form-group">
+                                <input type="text" id="githubInput" class="form-input" placeholder="GitHub URL">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="linkedinInput" class="form-input" placeholder="LinkedIn URL">
+                            </div>
+                            <button class="btn btn-primary hover-glow" onclick="updateProfiles()">
+                                <span>Update Profiles</span>
+                            </button>
+                        </div>
+                        
+                        <div class="management-section glass hover-lift">
+                            <h4>📊 Progress Tracking</h4>
+                            <div class="progress-inputs">
+                                <div class="form-group">
+                                    <label>Leads Approached:</label>
+                                    <input type="number" id="leadsInput" class="form-input" min="0">
+                                </div>
+                                <div class="form-group">
+                                    <label>Jobs Applied:</label>
+                                    <input type="number" id="jobsInput" class="form-input" min="0">
+                                </div>
+                                <div class="form-group">
+                                    <label>Interviews Done:</label>
+                                    <input type="number" id="interviewsInput" class="form-input" min="0">
+                                </div>
+                            </div>
+                            <button class="btn btn-primary hover-glow" onclick="updateProgress()">
+                                <span>Update Progress</span>
+                            </button>
+                        </div>
+
+                        <div class="management-section glass hover-lift full-width">
+                            <h4>🔑 Student Credentials (Git Style)</h4>
+                            <div class="git-credentials-container">
+                                <div class="git-branch-section">
+                                    <h5 class="git-branch-title">
+                                        <span class="git-branch-icon">🌿</span>
+                                        main
+                                    </h5>
+                                    <div class="git-commit-container">
+                                        <div class="git-commit">
+                                            <div class="git-commit-header">
+                                                <span class="git-hash">#student-creds</span>
+                                                <span class="git-author">Student Credentials</span>
+                                            </div>
+                                            <div class="git-commit-message">
+                                                <div class="credential-item">
+                                                    <span class="credential-label">📧 Job Application Email:</span>
+                                                    <span class="credential-value" id="gitJobEmail">Loading...</span>
+                                                    <button class="btn-copy" onclick="copyToClipboard('gitJobEmail')" title="Copy to clipboard">
+                                                        📋
+                                                    </button>
+                                                </div>
+                                                <div class="credential-item">
+                                                    <span class="credential-label">🔐 Job Account Password:</span>
+                                                    <span class="credential-value" id="gitJobPassword">Loading...</span>
+                                                    <button class="btn-copy" onclick="copyToClipboard('gitJobPassword')" title="Copy to clipboard">
+                                                        📋
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="git-branch-section">
+                                    <h5 class="git-branch-title">
+                                        <span class="git-branch-icon">🌿</span>
+                                        preferences
+                                    </h5>
+                                    <div class="git-commit-container">
+                                        <div class="git-commit">
+                                            <div class="git-commit-header">
+                                                <span class="git-hash">#job-prefs</span>
+                                                <span class="git-author">Job Preferences</span>
+                                            </div>
+                                            <div class="git-commit-message">
+                                                <div class="credential-item">
+                                                    <span class="credential-label">🎯 Job Preferences:</span>
+                                                    <span class="credential-value" id="gitJobPreferences">Loading...</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="git-branch-section">
+                                    <h5 class="git-branch-title">
+                                        <span class="git-branch-icon">🌿</span>
+                                        skills
+                                    </h5>
+                                    <div class="git-commit-container">
+                                        <div class="git-commit">
+                                            <div class="git-commit-header">
+                                                <span class="git-hash">#tech-stack</span>
+                                                <span class="git-author">Technical Skills</span>
+                                            </div>
+                                            <div class="git-commit-message">
+                                                <div id="gitSkillsContainer" class="skills-git-container">
+                                                    <span class="no-data-message">Loading skills...</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="management-section glass hover-lift full-width">
+                            <h4>💼 Job Applications Management</h4>
+                            <div class="job-application-form">
+                                <h5 class="section-title">Add New Job Application</h5>
+                                <form id="jobApplicationForm" class="job-form">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label>Job Title:</label>
+                                            <input type="text" id="jobTitle" class="form-input" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Company:</label>
+                                            <input type="text" id="company" class="form-input">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label>Source:</label>
+                                            <select id="source" class="form-select" required>
+                                                <option value="LinkedIn">LinkedIn</option>
+                                                <option value="Indeed">Indeed</option>
+                                                <option value="Glassdoor">Glassdoor</option>
+                                                <option value="Company Website">Company Website</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Status:</label>
+                                            <select id="applicationStatus" class="form-select" required>
+                                                <option value="applied">Applied</option>
+                                                <option value="lead">Lead Approached</option>
+                                                <option value="interview_scheduled">Interview Scheduled</option>
+                                                <option value="interview_done">Interview Done</option>
+                                                <option value="offer">Job Offer</option>
+                                                <option value="rejected">Rejected</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label>Application Link:</label>
+                                            <input type="url" id="applicationLink" class="form-input">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Interview Date:</label>
+                                            <input type="datetime-local" id="interviewDate" class="form-input">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Notes:</label>
+                                        <textarea id="applicationNotes" class="form-textarea" rows="3"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Admin Notes:</label>
+                                        <textarea id="adminNotes" class="form-textarea" rows="3"></textarea>
+                                    </div>
+                                    <button type="button" class="btn btn-primary hover-glow" onclick="addJobApplication()">
+                                        <span>Add Job Application</span>
+                                    </button>
+                                </form>
+                            </div>
+
+                            <div class="applications-list" style="margin-top: 2rem;">
+                                <h5 class="section-title">Current Job Applications</h5>
+                                <div id="studentApplicationsList" class="applications-container">
+                                    <p class="no-data-message">No job applications yet</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment History Tab -->
+            <div id="payments-tab" class="tab-content">
+                <div class="payment-history-section glass reveal">
+                    <h3 class="section-title">Payment History</h3>
+                    <div id="paymentHistoryContainer">
+                        <!-- Payment history will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Remitly Payments Tab -->
+            <div id="remitly-payments-tab" class="tab-content">
+                <div class="remitly-payments-section glass reveal">
+                    <h3 class="section-title">Remitly Payments Management</h3>
+                    <p class="text-muted">Manage and verify Remitly payments submitted by students</p>
+                    <div id="remitlyPaymentsContainer">
+                        <!-- Remitly payments will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/animations.js"></script>
+    <script>
+        // Tab navigation
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(`${tabName}-tab`).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            // Load specific data for the tab
+            if (tabName === 'remitly-payments') {
+                loadRemitlyPayments();
+            } else if (tabName === 'payments') {
+                loadPaymentHistory();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Entiha</title>
+    <link rel="icon" type="image/png" sizes="512x512" href="images/tilo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background -->
+    <div class="elegant-bg"></div>
+
+    <nav class="luxury-nav">
+        <div class="nav-container">
+            <div class="logo">Entiha</div>
+            <button class="mobile-menu-toggle">☰</button>
+            <div class="nav-links">
+                <a href="dashboard.html" class="nav-link active">Dashboard</a>
+                <a href="profile.html" class="nav-link">Profile</a>
+                <a href="packages.html" class="nav-link" id="packageLink">Packages</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="#" class="nav-link" onclick="logout()">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <div class="dashboard-container animate-fade-in">
+            <h1 id="welcomeMessage" class="gradient-text animate-typewriter">Welcome, User!</h1>
+            
+            <div class="dashboard-sections enhanced-grid">
+                <div class="dashboard-section glass hover-lift animate-slide-up" id="resume-card">
+                    <h3 class="section-title animate-slide-left">Resume</h3>
+                    <div id="resumeSection" class="section-content">
+                        <p id="noResumeMessage" class="no-data-message">No resume uploaded yet</p>
+                    </div>
+                </div>
+                
+                <div class="dashboard-section glass hover-lift animate-slide-up" id="courses-card">
+                    <h3 class="section-title animate-slide-left">Suggested Courses</h3>
+                    <div id="coursesSection" class="section-content">
+                        <p id="noCoursesMessage" class="no-data-message">No courses suggested yet</p>
+                    </div>
+                </div>
+                
+                <div class="dashboard-section glass hover-lift animate-slide-up" id="profiles-card">
+                    <h3 class="section-title animate-slide-left">Professional Profiles</h3>
+                    <div id="profilesSection" class="section-content">
+                        <div class="profile-item">
+                            <strong>LinkedIn:</strong>
+                            <span id="linkedinLink" class="profile-link">Not provided yet</span>
+                        </div>
+                        <div class="profile-item">
+                            <strong>GitHub:</strong>
+                            <span id="githubLink" class="profile-link">Not provided yet</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Full Width Skills & Preferences Card -->
+                <div class="dashboard-section glass hover-lift animate-slide-up full-width-card" id="skills-preferences-card">
+                    <h3 class="section-title animate-slide-left">Your Skills & Preferences</h3>
+                    <div id="skillsSection" class="section-content">
+                        <div class="skills-preferences-grid">
+                            <div class="skills-column">
+                                <h4 class="subsection-title">Skills</h4>
+                                <div id="skillsList" class="skills-container">
+                                    <p class="no-data-message">No skills listed</p>
+                                </div>
+                            </div>
+                            <div class="preferences-column">
+                                <h4 class="subsection-title">Job Preferences</h4>
+                                <div id="preferencesContent">
+                                    <p class="no-data-message">No preferences specified</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Full Width Account Information Card -->
+                <div class="dashboard-section glass hover-lift animate-slide-up full-width-card" id="account-info-card">
+                    <h3 class="section-title animate-slide-left">Account Information</h3>
+                    <div id="accountInfoSection" class="section-content">
+                        <div class="account-info-grid">
+                            <div class="account-info-item">
+                                <strong>Job Application Email:</strong>
+                                <span id="accountEmail">Loading...</span>
+                            </div>
+                            <div class="account-info-item">
+                                <strong>Job Account Password:</strong>
+                                <span id="accountPassword">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-section glass hover-lift animate-slide-up wide-card" id="progress-card">
+                    <h3 class="section-title animate-slide-left">Application Progress</h3>
+                    <div class="progress-stats enhanced-stats">
+                        <div class="stat-item animate-bounce-in" style="animation-delay: 0.1s;">
+                            <span class="stat-label">Total Applications:</span>
+                            <span id="totalApplications" class="stat-value">0</span>
+                        </div>
+                        <div class="stat-item animate-bounce-in" style="animation-delay: 0.2s;">
+                            <span class="stat-label">Leads Approached:</span>
+                            <span id="leadsCount" class="stat-value">0</span>
+                        </div>
+                        <div class="stat-item animate-bounce-in" style="animation-delay: 0.3s;">
+                            <span class="stat-label">Interviews Scheduled:</span>
+                            <span id="interviewsScheduled" class="stat-value">0</span>
+                        </div>
+                        <div class="stat-item animate-bounce-in" style="animation-delay: 0.4s;">
+                            <span class="stat-label">Interviews Done:</span>
+                            <span id="interviewsDone" class="stat-value">0</span>
+                        </div>
+                        <div class="stat-item animate-bounce-in" style="animation-delay: 0.5s;">
+                            <span class="stat-label">Job Offers:</span>
+                            <span id="jobOffers" class="stat-value">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-section glass hover-lift animate-slide-up full-width-card" id="applications-card">
+                    <h3 class="section-title animate-slide-left">Job Applications</h3>
+                    <div id="jobApplicationsSection" class="section-content">
+                        <p id="noApplicationsMessage" class="no-data-message">No job applications yet</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="luxury-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Entiha</h3>
+                    <p>Your gateway to international career opportunities. We help students and graduates find their dream jobs abroad.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#how-it-works">How It Works</a></li>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="dashboard.html">Job Application</a></li>
+                        <li><a href="dashboard.html">Resume Writing</a></li>
+                        <li><a href="dashboard.html">Career Counseling</a></li>
+                        <li><a href="dashboard.html">Interview Preparation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>Email: Assignmentstandard@gmail.com</p>
+                    <p>Phone: +91 99969 96575</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Entiha. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>

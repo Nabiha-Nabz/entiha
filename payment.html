@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Entiha</title>
+    <link rel="icon" type="image/png" sizes="512x512" href="images/tilo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Cashfree SDK -->
+    <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+</head>
+<body>
+    <!-- Background -->
+    <div class="elegant-bg"></div>
+
+    <nav class="luxury-nav">
+        <div class="nav-container">
+            <div class="logo">Entiha</div>
+            <div class="nav-links">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="profile.html" class="nav-link">Profile</a>
+                <a href="packages.html" class="nav-link">Packages</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="#" class="nav-link" onclick="logout()">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <div class="payment-container animate-fade-in">
+            <h2 class="gradient-text">Complete Your Purchase</h2>
+            
+            <div class="payment-content">
+                <div class="payment-summary glass" id="order-summary">
+                    <h3>Order Summary</h3>
+                    <div class="order-details">
+                        <div class="order-item">
+                            <span class="order-label">Plan:</span>
+                            <span id="planName" class="order-value"></span>
+                        </div>
+                        <div class="order-item">
+                            <span class="order-label">Amount:</span>
+                            <span id="planPrice" class="order-value price-amount"></span>
+                        </div>
+                        <div class="order-item">
+                            <span class="order-label">Billing Cycle:</span>
+                            <span class="order-value">One-time payment</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Payment Methods Selection -->
+                <div class="payment-methods glass">
+                    <h3>Choose Payment Method</h3>
+                    <div class="payment-options">
+                        
+                        <!-- Cashfree Payment -->
+                        <div class="payment-option active" data-method="cashfree">
+                            <div class="payment-option-header">
+                                <input type="radio" name="paymentMethod" value="cashfree" checked>
+                                <div class="payment-icon">💳</div>
+                                <div class="payment-info">
+                                    <h4>Credit/Debit Card/UPI/Net Banking (Cashfree)</h4>
+                                    <p>Instant payment - Service activated immediately</p>
+                                </div>
+                            </div>
+                            <div class="payment-option-details">
+                                <div class="payment-form-container" id="cashfree-form">
+                                    <div class="cashfree-info">
+                                        <p>You will be redirected to Cashfree's secure payment page to complete your transaction.</p>
+                                        <div class="supported-methods">
+                                            <h5>Supported Payment Methods:</h5>
+                                            <div class="method-icons">
+                                                <span class="method-icon">💳</span> Cards
+                                                <span class="method-icon">📱</span> UPI
+                                                <span class="method-icon">🏦</span> Net Banking
+                                                <span class="method-icon">💰</span> Wallet
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Remitly Payment Option -->
+                        <div class="payment-option" data-method="remitly">
+                            <div class="payment-option-header">
+                                <input type="radio" name="paymentMethod" value="remitly">
+                                <div class="payment-icon">💸</div>
+                                <div class="payment-info">
+                                    <h4>Remitly (International Students)</h4>
+                                    <p>Bank transfer - Service activated after confirmation</p>
+                                </div>
+                            </div>
+                            <div class="payment-option-details">
+                                <div class="remittance-instructions">
+                                    <h5>How to Pay with Remitly:</h5>
+                                    <ol>
+                                        <li>Send <strong id="remitlyAmount"></strong> to our bank account</li>
+                                        <li>Use Order ID: <strong id="remitlyOrderId"></strong> as reference</li>
+                                        <li>Complete the transfer in the Remitly app</li>
+                                        <li>Upload payment screenshot after transfer</li>
+                                        <li>Service activated within 1-5 minutes after verification</li>
+                                    </ol>
+                                    
+                                    <div class="bank-details">
+                                        <h5>Bank Account Details:</h5>
+                                        <div class="bank-info">
+
+                                            <div class="info-item">
+                                                <strong>Account Holder:</strong>
+                                                <span>Siddharth Kaushik</span>
+                                                <button type="button" class="btn-copy" onclick="copyToClipboard('Siddharth Kaushik')">Copy</button>
+                                            </div>
+
+                                            <div class="info-item">
+                                                <strong>Bank Name:</strong>
+                                                <span>Punjab National Bank</span>
+                                                <button type="button" class="btn-copy" onclick="copyToClipboard('Punjab National Bank')">Copy</button>
+                                            </div>
+
+                                            <div class="info-item">
+                                                <strong>Account Number:</strong>
+                                                <span>7343000100043980</span>
+                                                <button type="button" class="btn-copy" onclick="copyToClipboard('7343000100043980')">Copy</button>
+                                            </div>
+
+                                            <div class="info-item">
+                                                <strong>IFSC Code:</strong>
+                                                <span>PUNB0734300</span>
+                                                <button type="button" class="btn-copy" onclick="copyToClipboard('PUNB0734300')">Copy</button>
+                                            </div>
+
+                                            <div class="info-item">
+                                                <strong>Email:</strong>
+                                                <span>siddharth.kaushik2003@gmail.com</span>
+                                                <button type="button" class="btn-copy" onclick="copyToClipboard('siddharth.kaushik2003@gmail.com')">Copy</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="remitly-steps">
+                                        <h5>Steps to Send Money via Remitly:</h5>
+                                        <div class="step"><strong>Step 1:</strong> Open Remitly App</div>
+                                        <div class="step"><strong>Step 2:</strong> Choose "Send to India"</div>
+                                        <div class="step"><strong>Step 3:</strong> Select "Bank Transfer"</div>
+                                        <div class="step"><strong>Step 4:</strong> Enter our bank details</div>
+                                        <div class="step"><strong>Step 5:</strong> Enter <strong id="remitlyOrderId2"></strong> in "Reference/Notes"</div>
+                                        <div class="step"><strong>Step 6:</strong> Send exact amount: <strong id="remitlyAmount2"></strong></div>
+                                    </div>
+
+                                    <div class="upload-section">
+                                        <h5>Upload Payment Proof:</h5>
+                                        <div class="upload-area" id="remitlyUploadArea">
+                                            <input type="file" id="remitlyProof" accept="image/*" style="display: none;">
+                                            <div class="upload-placeholder">
+                                                <div class="upload-icon">📎</div>
+                                                <p>Click to upload payment screenshot</p>
+                                                <small>Upload transaction confirmation screenshot from Remitly</small>
+                                            </div>
+                                            <div class="upload-preview" id="remitlyPreview" style="display: none;">
+                                                <img id="remitlyPreviewImg" src="" alt="Payment Proof">
+                                                <button type="button" class="btn-remove" onclick="removeRemitlyProof()">✕</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="important-notes">
+                                        <h5>⚠️ Important Instructions:</h5>
+                                        <ul>
+                                            <li>Transfer can take 1-5 minutes to process</li>
+                                            <li>Always include ORDER ID in reference/notes</li>
+                                            <li>Only use the official bank account details provided</li>
+                                            <li>Upload payment screenshot for faster verification</li>
+                                            <li>Service will be activated automatically after payment confirmation</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TapTap Send Option (Disabled) -->
+                        <div class="payment-option disabled" data-method="taptap">
+                            <div class="payment-option-header">
+                                <input type="radio" name="paymentMethod" value="taptap" disabled>
+                                <div class="payment-icon">🌍</div>
+                                <div class="payment-info">
+                                    <h4>TapTap Send (Temporarily Unavailable)</h4>
+                                    <p>Please use Remitly or Cashfree for payments</p>
+                                </div>
+                            </div>
+                            <div class="payment-option-details">
+                                <div class="unavailable-message">
+                                    <p>⚠️ TapTap Send is currently unavailable. Please use Remitly or Cashfree payment methods.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="button" id="submitBtn" class="btn btn-primary btn-full">
+                        Pay Now with Cashfree
+                    </button>
+                </div>
+            </div>
+            
+            <div class="payment-security glass">
+                <div class="security-notice">
+                    <div class="security-icon">🔒</div>
+                    <div class="security-text">
+                        <strong>Your payment is secure and encrypted</strong>
+                        <p>We use bank-level security to protect your information</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Processing Modal -->
+    <div id="paymentProcessingModal" class="modal" style="display: none;">
+        <div class="modal-content glass">
+            <div class="payment-processing">
+                <div class="spinner"></div>
+                <h3>Processing Payment</h3>
+                <p>Please wait while we process your payment...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/payment.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>

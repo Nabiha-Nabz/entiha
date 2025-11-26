@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Packages - Entiha</title>
+    <link rel="icon" type="image/png" sizes="512x512" href="images/tilo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="main-content">
+    <!-- Enhanced Background -->
+    <div class="elegant-bg"></div>
+
+    <nav class="luxury-nav">
+        <div class="nav-container">
+            <div class="logo">Entiha</div>
+            <button class="mobile-menu-toggle">☰</button>
+            <div class="nav-links">
+                <!-- Navigation will be populated by auth.js -->
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <div class="packages-container animate-fade-in">
+            <h2 class="gradient-text text-center">Choose Your Plan</h2>
+            <p class="text-center text-muted" style="margin-bottom: 3rem;">Select the package that best fits your career goals</p>
+            
+            <div id="currentPackageInfo" class="current-plan-section glass" style="display: none;">
+                <h3 class="section-title">Your Current Plan</h3>
+                <div id="currentPlanDisplay" class="current-plan-display"></div>
+            </div>
+
+            <div class="packages-grid" id="packagesGrid">
+                <div class="package-card glass" id="basicPlan">
+                    <div class="package-header">
+                        <h3 class="package-title">Basic Plan</h3>
+                        <div class="price">$50</div>
+                    </div>
+                    <ul class="package-features">
+                        <li class="feature-item">Apply for 30 quality jobs in a month</li>
+                        <li class="feature-item">Custom resume and cover letter for each job</li>
+                        <li class="feature-item">Weekly progress updates</li>
+                        <li class="feature-item">Basic career guidance</li>
+                        <li class="feature-item">Email support</li>
+                    </ul>
+                    <!-- Updated Button to link to payment page -->
+                    <a href="payment.html?plan=basic&price=50" class="btn btn-primary package-btn">
+                        Get Started - $50
+                    </a>
+                </div>
+                
+                <div class="package-card glass featured" id="proPlan">
+                    <div class="package-badge">Most Popular</div>
+                    <div class="package-header">
+                        <h3 class="package-title">Pro Plan</h3>
+                        <div class="price">$100</div>
+                    </div>
+                    <ul class="package-features">
+                        <li class="feature-item">Unlimited applications until you get leads</li>
+                        <li class="feature-item">Custom resume and cover letter for every job</li>
+                        <li class="feature-item">Priority support and progress tracking</li>
+                        <li class="feature-item">Advanced career counseling</li>
+                        <li class="feature-item">Interview preparation sessions</li>
+                        <li class="feature-item">LinkedIn profile optimization</li>
+                        <li class="feature-item">Guaranteed results</li>
+                    </ul>
+                    <!-- Updated Button to link to payment page -->
+                    <a href="payment.html?plan=pro&price=100" class="btn btn-primary package-btn">
+                        Start Pro Plan - $100
+                    </a>
+                </div>
+            </div>
+            
+            <div id="upgradeSection" class="upgrade-section glass" style="display: none;">
+                <h3>Upgrade Your Experience</h3>
+                <p>Upgrade to Pro for unlimited applications and priority support!</p>
+                <a href="payment.html?plan=pro&price=100" class="btn btn-primary upgrade-btn">Upgrade to Pro Plan</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="luxury-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Entiha</h3>
+                    <p>Your gateway to international career opportunities. We help students and graduates find their dream jobs abroad.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#how-it-works">How It Works</a></li>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="dashboard.html">Job Application</a></li>
+                        <li><a href="dashboard.html">Resume Writing</a></li>
+                        <li><a href="dashboard.html">Career Counseling</a></li>
+                        <li><a href="dashboard.html">Interview Preparation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>Email: Assignmentstandard@gmail.com</p>
+                    <p>Phone: +91 99969 96575</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Entiha. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/packages.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>

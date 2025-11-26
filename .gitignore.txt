@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+.venv/
+venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual environments
+.venv/
+venv/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Firebase cache
+.firebase/
+
+# Local config / secrets
+.env
+*.env
+
+# Database (SQLite)
+database.db
+
+# node modules (if any)
+node_modules/
+
+# Logs
+*.log
+
+# other
+coverage/
+dist/
+build/

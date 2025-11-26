@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Backend Test - Entiha</title>
+    <link rel="icon" type="image/png" sizes="512x512" href="images/tilo.png">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+        .success { color: green; }
+        .error { color: red; }
+        #result { margin-top: 20px; padding: 15px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Backend Connection Test</h1>
+    <button onclick="testHealth()">Test Backend Health</button>
+    <button onclick="testSignup()">Test Signup</button>
+    <button onclick="testLogin()">Test Login</button>
+    <button onclick="testAuth()">Test Auth Check</button>
+    
+    <div id="result"></div>
+    
+    <script>
+        const API_BASE = 'http://localhost:5000/api';
+        
+        async function testHealth() {
+            try {
+                const response = await fetch(`${API_BASE}/health`, {
+                    credentials: 'include'
+                });
+                const data = await response.json();
+                showResult(data, 'Health Check');
+            } catch (error) {
+                showResult({ success: false, message: error.message }, 'Health Check');
+            }
+        }
+        
+        async function testSignup() {
+            const testData = {
+                name: "Test User",
+                email: "test@example.com",
+                phone: "+1234567890",
+                skills: ["javascript", "python"],
+                job_preferences: "Software Developer",
+                job_account_email: "test@example.com",
+                job_account_password: "test123",
+                password: "Test123!"
+            };
+            
+            try {
+                const response = await fetch(`${API_BASE}/signup`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(testData),
+                    credentials: 'include'
+                });
+                const data = await response.json();
+                showResult(data, 'Signup Test');
+            } catch (error) {
+                showResult({ success: false, message: error.message }, 'Signup Test');
+            }
+        }
+        
+        async function testLogin() {
+            const loginData = {
+                email: "Assignmentstandard@gmail.com",
+                password: "Filing@ps"
+            };
+            
+            try {
+                const response = await fetch(`${API_BASE}/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(loginData),
+                    credentials: 'include'
+                });
+                const data = await response.json();
+                showResult(data, 'Login Test');
+            } catch (error) {
+                showResult({ success: false, message: error.message }, 'Login Test');
+            }
+        }
+        
+        async function testAuth() {
+            try {
+                const response = await fetch(`${API_BASE}/check-auth`, {
+                    credentials: 'include'
+                });
+                const data = await response.json();
+                showResult(data, 'Auth Check');
+            } catch (error) {
+                showResult({ success: false, message: error.message }, 'Auth Check');
+            }
+        }
+        
+        function showResult(data, testName) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `
+                <h3>${testName}</h3>
+                <pre class="${data.success ? 'success' : 'error'}">${JSON.stringify(data, null, 2)}</pre>
+            `;
+        }
+        
+        // Test health on load
+        testHealth();
+    </script>
+</body>
+</html>
