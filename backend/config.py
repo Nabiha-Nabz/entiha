@@ -1,7 +1,7 @@
 import os
 
 class Config:
-    SECRET_KEY = 'your-secret-key-here-change-in-production'
+    SECRET_KEY = os.getenv('SECRET_KEY', 'dev-only-change-me')
     DATABASE_PATH = os.path.join(os.path.dirname(__file__), 'database.db')
     SQLALCHEMY_DATABASE_URI = f'sqlite:///{DATABASE_PATH}'
     STATIC_FOLDER = '../'
@@ -11,8 +11,6 @@ class Config:
     MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
-    MAIL_USERNAME = 'assignmentstandard@gmail.com'
-    # App password from your screenshot (16 chars, no spaces)
-    MAIL_PASSWORD = 'grmajqebqalfymvg'
-    # Use display name "Entiha" for the sender
-    MAIL_DEFAULT_SENDER = 'Entiha <assignmentstandard@gmail.com>'
+    MAIL_USERNAME = os.getenv('MAIL_USERNAME', '')
+    MAIL_PASSWORD = os.getenv('MAIL_PASSWORD', '')
+    MAIL_DEFAULT_SENDER = os.getenv('MAIL_DEFAULT_SENDER', 'Entiha <noreply@example.com>')

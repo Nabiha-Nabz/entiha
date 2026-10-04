@@ -65,5 +65,14 @@ node_modules/
 # dotenv environment variables file
 .env
 
+# Python and local application data
+__pycache__/
+*.py[cod]
+*.db
+.venv/
+venv/
+.pytest_cache/
+.gitignore.txt
+
 # dataconnect generated files
 .dataconnect

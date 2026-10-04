@@ -42,9 +42,9 @@ CORS(app,
 init_db(app)
 
 # Cashfree Configuration
-CASHFREE_APP_ID = "your_cashfree_app_id"  # Replace with your Cashfree App ID
-CASHFREE_SECRET_KEY = "your_cashfree_secret_key"  # Replace with your Cashfree Secret Key
-CASHFREE_BASE_URL = "https://sandbox.cashfree.com"  # Change to "https://api.cashfree.com" for production
+CASHFREE_APP_ID = os.getenv('CASHFREE_APP_ID', '')
+CASHFREE_SECRET_KEY = os.getenv('CASHFREE_SECRET_KEY', '')
+CASHFREE_BASE_URL = os.getenv('CASHFREE_BASE_URL', 'https://sandbox.cashfree.com')
 
 def get_cashfree_headers():
     return {
